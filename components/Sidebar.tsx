@@ -1,7 +1,14 @@
 import * as React from 'react';
 import Image from 'next/image';
 import SidebarRow from './SidebarRow';
-import {BellIcon, BookmarkIcon, CollectionIcon, HashtagIcon, HomeIcon, MailIcon} from '@heroicons/react/outline';
+import {
+    BellIcon,
+    BookmarkIcon,
+    CollectionIcon,
+    HashtagIcon,
+    HomeIcon,
+    MailIcon
+} from '@heroicons/react/outline';
 
 export default function Sidebar() {
     return (<div className="flex flex-col col-span-2 items-center px-4 md:items-start">
