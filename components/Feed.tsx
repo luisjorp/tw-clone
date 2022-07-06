@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {RefreshIcon} from '@heroicons/react/outline';
+import TweetBox from './TweetBox';
 
 export default function Feed() {
     return (<div className="col-span-7 lg:col-span-5 border-x">
@@ -11,7 +12,9 @@ export default function Feed() {
         </div>
 
         {/*tweetbox*/}
-
+        <div>
+            <TweetBox/>
+        </div>
 
     </div>);
 }
