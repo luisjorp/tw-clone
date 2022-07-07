@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import Sidebar from "../components/Sidebar";
 import Feed from "../components/Feed";
@@ -24,3 +24,10 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const tweets = await fetchTweets();
+  return {
+    props: {},
+  };
+};
