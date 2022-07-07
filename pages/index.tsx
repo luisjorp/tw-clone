@@ -1,25 +1,26 @@
-import type {NextPage} from 'next'
-import Head from 'next/head'
-import Sidebar from '../components/Sidebar';
-import Feed from '../components/Feed';
-import Widgets from '../components/Widgets';
+import type { NextPage } from "next";
+import Head from "next/head";
+import Sidebar from "../components/Sidebar";
+import Feed from "../components/Feed";
+import Widgets from "../components/Widgets";
 
 const Home: NextPage = () => {
-    return (<div className="mx-auto max-h-screen overflow-hidden lg:max-w-6xl">
-        <Head>
-            <title>Twitter 2.0</title>
-            <link rel="icon" href="/favicon.ico"/>
-        </Head>
+  return (
+    <div className="mx-auto max-h-screen overflow-hidden lg:max-w-6xl">
+      <Head>
+        <title>Twitter 2.0</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-        <main className="grid grid-cols-9">
-            <Sidebar/>
+      <main className="grid grid-cols-9">
+        <Sidebar />
 
-            <Feed/>
+        <Feed />
 
-            <Widgets/>
-        </main>
+        <Widgets />
+      </main>
+    </div>
+  );
+};
 
-    </div>)
-}
-
-export default Home
+export default Home;
