@@ -52,17 +52,17 @@ export default function Tweet({ tweet }: Props) {
         </div>
       </div>
       <div className="mt-5 flex justify-between">
-        <div className="flex cursor-pointer items-center space-x-3 text-gray-400">
+        <div className="flex cursor-pointer items-center space-x-3 text-gray-400 hover:text-twitter">
           <ChatAlt2Icon className="h-5 w-5" />
           <p>5</p>
         </div>
-        <div className="flex cursor-pointer items-center space-x-3 text-gray-400">
+        <div className="flex cursor-pointer items-center space-x-3 text-gray-400 hover:text-twitter">
           <SwitchHorizontalIcon className="h-5 w-5" />
         </div>
-        <div className="flex cursor-pointer items-center space-x-3 text-gray-400">
+        <div className="flex cursor-pointer items-center space-x-3 text-gray-400 hover:text-twitter">
           <HeartIcon className="h-5 w-5" />
         </div>
-        <div className="flex cursor-pointer items-center space-x-3 text-gray-400">
+        <div className="flex cursor-pointer items-center space-x-3 text-gray-400 hover:text-twitter">
           <UploadIcon className="h-5 w-5 " />
         </div>
       </div>
