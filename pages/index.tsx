@@ -1,6 +1,7 @@
-import type { GetServerSideProps, NextPage } from "next";
+import type { GetServerSideProps } from "next";
 import Head from "next/head";
 import Sidebar from "../components/Sidebar";
+import { Toaster } from "react-hot-toast";
 import Feed from "../components/Feed";
 import Widgets from "../components/Widgets";
 import { fetchTweets } from "../utils/fetchTweets";
@@ -11,18 +12,18 @@ interface Props {
 }
 
 const Home = ({ tweets }: Props) => {
-  console.log("hello world");
-    return (
+  return (
     <div className="mx-auto max-h-screen overflow-hidden lg:max-w-6xl">
       <Head>
         <title>Twitter 2.0</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Toaster />
 
       <main className="grid grid-cols-9">
         <Sidebar />
 
-        <Feed tweets={tweets}/>
+        <Feed tweets={tweets} />
 
         <Widgets />
       </main>
