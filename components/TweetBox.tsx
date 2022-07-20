@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import {
   CalendarIcon,
@@ -8,12 +8,25 @@ import {
   PhotographIcon,
   SearchCircleIcon,
 } from "@heroicons/react/outline";
-import {useSession} from 'next-auth/react';
+import { useSession } from "next-auth/react";
 
 export default function TweetBox() {
   const [input, setInput] = useState<string>("");
-  const { data: session } = useSession();
+  const [image, setImage] = useState<string>("");
 
+  const imageInputRef = useRef<HTMLInputElement>(null);
+  const { data: session } = useSession();
+  const [imageUrlBoxIsOpen, setImageUrlBoxIsOpen] = useState<boolean>(false);
+
+  const addImageToTweet = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    if (!imageInputRef.current?.value) return;
+    setImage(imageInputRef.current.value);
+    imageInputRef.current.value = "";
+    setImageUrlBoxIsOpen(false);
+  };
   return (
     <div className="flex space-x-2 p-5">
       <div className="relative mt-4 h-14 w-14">
@@ -36,7 +49,10 @@ export default function TweetBox() {
           />
           <div className="flex items-center">
             <div className="flex flex-1 space-x-2 text-twitter">
-              <PhotographIcon className="h-5 w-5 cursor-pointer transition-transform duration-150 ease-out hover:scale-150" />
+              <PhotographIcon
+                className="h-5 w-5 cursor-pointer transition-transform duration-150 ease-out hover:scale-150"
+                onClick={() => setImageUrlBoxIsOpen(!imageUrlBoxIsOpen)}
+              />
               <SearchCircleIcon className="h-5 w-5" />
               <EmojiHappyIcon className="h-5 w-5" />
               <CalendarIcon className="h-5 w-5" />
@@ -49,6 +65,31 @@ export default function TweetBox() {
               Tweet
             </button>
           </div>
+          {imageUrlBoxIsOpen && (
+            <form
+              action=""
+              className="mt-5 flex rounded-lg bg-twitter/80 py-2 px-4 "
+            >
+              <input
+                ref={imageInputRef}
+                type="text"
+                placeholder="Enter Image URL..."
+                className="flex-1 bg-transparent text-white outline-none placeholder:text-white"
+              />
+              <button
+                className="font-bold text-white"
+                type="submit"
+                onClick={addImageToTweet}
+              >
+                Add Image
+              </button>
+            </form>
+          )}
+          {image && (
+              <div className="relative mt-10 h-40 w-full rounded-xl shadow-lg">
+                <Image src={image} width="100%" height="100%" objectFit="contain" />
+              </div>
+          )}
         </form>
       </div>
     </div>
